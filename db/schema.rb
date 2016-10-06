@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003123857) do
+ActiveRecord::Schema.define(version: 20161006144457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "broadcast_lists", force: :cascade do |t|
-    t.integer  "list_id"
+  create_table "broadcast_lists", primary_key: "list_id", id: :integer, force: :cascade do |t|
     t.string   "list_name"
     t.string   "owner_jid"
     t.datetime "created_at", null: false
@@ -30,8 +29,7 @@ ActiveRecord::Schema.define(version: 20161003123857) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "firms", force: :cascade do |t|
-    t.integer  "firm_number"
+  create_table "firms", primary_key: "firm_number", id: :integer, force: :cascade do |t|
     t.string   "firm_full_name"
     t.string   "firm_short_name"
     t.string   "firm_domain"
@@ -48,8 +46,7 @@ ActiveRecord::Schema.define(version: 20161003123857) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.integer  "group_id"
+  create_table "groups", primary_key: "group_id", id: :integer, force: :cascade do |t|
     t.string   "group_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,8 +81,7 @@ ActiveRecord::Schema.define(version: 20161003123857) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "users", primary_key: "user_id", id: :integer, force: :cascade do |t|
     t.integer  "firm_number"
     t.string   "first_name"
     t.string   "last_name"
