@@ -8,6 +8,5 @@ class UpdateDatabasePrimaryKeys < ActiveRecord::Migration[5.0]
      execute %Q{ ALTER TABLE "users" ADD PRIMARY KEY ("user_id"); }
      execute %Q{ ALTER TABLE "groups" ADD PRIMARY KEY ("group_id"); }
      execute %Q{ ALTER TABLE "broadcast_lists" ADD PRIMARY KEY ("list_id"); }
-      
   end
 end
