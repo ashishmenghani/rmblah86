@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe GroupsController, :type => :routing do
+RSpec.describe V1::GroupsController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do

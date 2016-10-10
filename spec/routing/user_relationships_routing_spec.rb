@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe UserRelationshipsController, type: :routing do
+RSpec.describe V1::UserRelationshipsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do

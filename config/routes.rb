@@ -9,17 +9,25 @@
   resources :current_chats
   resources :open_groups
   resources :group_members
+
+
   resources :firms, param: :firm_number do
+  member do
       resources :users, param: :user_id
   end
+  end
   resources :users, param: :user_id do
+  member do
       resources :user_relationships
       resources :current_chats
       resources :open_groups,param: :group_id
       resources :open_lists,param: :list_id
   end
+  end
   resources :groups, param: :group_id do
+  member do
       resources :group_members
+  end
   end
   
   post 'authenticate', to: 'authentication#authenticate'

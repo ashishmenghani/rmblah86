@@ -4,7 +4,11 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
+  if params[:firm_number]
+    @users =  User.where(:firm_number => params[:firm_number])
+  else  
     @users = User.all
+  end
 
     render json: @users
   end

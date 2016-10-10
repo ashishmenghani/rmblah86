@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe BroadcastListsController, type: :routing do
+RSpec.describe V1::BroadcastListsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
@@ -12,11 +12,11 @@ RSpec.describe BroadcastListsController, type: :routing do
     end
 
     it "routes to #show" do
-      expect(:get => "/broadcast_lists/1").to route_to("broadcast_lists#show", :id => "1")
+      expect(:get => "/broadcast_lists/1").to route_to("broadcast_lists#show", :list_id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/broadcast_lists/1/edit").to route_to("broadcast_lists#edit", :id => "1")
+      expect(:get => "/broadcast_lists/1/edit").to route_to("broadcast_lists#edit", :list_id => "1")
     end
 
     it "routes to #create" do
@@ -24,15 +24,15 @@ RSpec.describe BroadcastListsController, type: :routing do
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/broadcast_lists/1").to route_to("broadcast_lists#update", :id => "1")
+      expect(:put => "/broadcast_lists/1").to route_to("broadcast_lists#update", :list_id => "1")
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/broadcast_lists/1").to route_to("broadcast_lists#update", :id => "1")
+      expect(:patch => "/broadcast_lists/1").to route_to("broadcast_lists#update", :list_id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/broadcast_lists/1").to route_to("broadcast_lists#destroy", :id => "1")
+      expect(:delete => "/broadcast_lists/1").to route_to("broadcast_lists#destroy", :list_id => "1")
     end
 
   end
