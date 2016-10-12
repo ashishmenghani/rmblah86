@@ -4,6 +4,7 @@ class OpenGroupsController < ApplicationController
 
   # GET /open_groups
   def index
+  
     @open_groups = OpenGroup.all
 
     render json: @open_groups
@@ -11,6 +12,11 @@ class OpenGroupsController < ApplicationController
 
   # GET /open_groups/1
   def show
+    render json: @open_group
+  end
+
+  def opengroupsforuser
+    @open_group =  OpenGroup.where(:jid => params[:jid])
     render json: @open_group
   end
 

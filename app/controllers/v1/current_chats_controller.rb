@@ -4,6 +4,7 @@ class CurrentChatsController < ApplicationController
 
   # GET /current_chats
   def index
+ 
     @current_chats = CurrentChat.all
 
     render json: @current_chats

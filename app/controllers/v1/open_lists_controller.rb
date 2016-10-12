@@ -4,6 +4,7 @@ class OpenListsController < ApplicationController
 
   # GET /open_lists
   def index
+  
     @open_lists = OpenList.all
 
     render json: @open_lists
@@ -23,6 +24,11 @@ class OpenListsController < ApplicationController
     else
       render json: @open_list.errors, status: :unprocessable_entity
     end
+  end
+
+   def openlistsforuser
+    @open_list =  OpenList.where(:jid => params[:jid])
+    render json: @open_list
   end
 
   # PATCH/PUT /open_lists/1

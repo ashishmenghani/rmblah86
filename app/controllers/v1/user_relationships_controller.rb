@@ -4,6 +4,7 @@ class UserRelationshipsController < ApplicationController
 
   # GET /user_relationships
   def index
+   
     @user_relationships = UserRelationship.all
 
     render json: @user_relationships
@@ -17,12 +18,16 @@ class UserRelationshipsController < ApplicationController
   # POST /user_relationships
   def create
     @user_relationship = UserRelationship.new(user_relationship_params)
-
     if @user_relationship.save
       render json: @user_relationship, status: :created, location: @user_relationship
     else
       render json: @user_relationship.errors, status: :unprocessable_entity
     end
+  end
+
+   def getrelationshipsforuser
+    @user_relationship =  UserRelationship.where(:jid_from => params[:jid_from])
+    render json: @user_relationship
   end
 
   # PATCH/PUT /user_relationships/1
@@ -51,3 +56,4 @@ class UserRelationshipsController < ApplicationController
     end
 end
 end
+
