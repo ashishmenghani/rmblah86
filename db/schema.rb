@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019130638) do
+ActiveRecord::Schema.define(version: 20161019142940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20161019130638) do
     t.string   "phone_number"
     t.string   "country_code"
     t.string   "jid"
+    t.index ["email"], name: "index_accounts_on_email", using: :btree
+    t.index ["jid"], name: "index_accounts_on_jid", using: :btree
+    t.index ["phone_number"], name: "index_accounts_on_phone_number", using: :btree
   end
 
   create_table "broadcast_lists", primary_key: "list_id", id: :integer, force: :cascade do |t|
@@ -75,6 +78,7 @@ ActiveRecord::Schema.define(version: 20161019130638) do
     t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["jid"], name: "index_open_groups_on_jid", using: :btree
   end
 
   create_table "open_lists", force: :cascade do |t|
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(version: 20161019130638) do
     t.integer  "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["jid"], name: "index_open_lists_on_jid", using: :btree
   end
 
   create_table "user_relationships", force: :cascade do |t|
@@ -90,6 +95,7 @@ ActiveRecord::Schema.define(version: 20161019130638) do
     t.integer  "relation_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["jid_from"], name: "index_user_relationships_on_jid_from", using: :btree
   end
 
   create_table "users", primary_key: "user_id", id: :integer, force: :cascade do |t|
