@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-   belongs_to :firms, optional: true, :foreign_key => "firm_number"
+   belongs_to :accounts
    has_many   :current_chats
    has_many   :open_groups
    has_many   :user_relationships   

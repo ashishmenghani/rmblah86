@@ -4,9 +4,11 @@ class ListMembersController < ApplicationController
 
   # GET /list_members
   def index
+    if params[:group_id]
+    @list_members =  ListMember.where(:list_id => params[:list_id])
+    else  
     @list_members = ListMember.all
-
-    render json: @list_members
+    end
   end
 
   # GET /list_members/1
