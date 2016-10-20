@@ -9,9 +9,9 @@
   
   
   resources :accounts
-  post 'get_accounts_by_jid', to: 'accounts#getaccountsbyjid'
-  post 'get_accounts_by_phone_number', to: 'accounts#getaccountsbyphonenumber'
-  post 'get_accounts_by_email', to: 'accounts#getaccountsbyemail'
+  post 'get_accounts_by_jid', to: 'account#getaccountsbyjid'
+  post 'get_accounts_by_phone_number', to: 'account#getaccountsbyphonenumber'
+  post 'get_accounts_by_email', to: 'account#getaccountsbyemail'
 
 
 
