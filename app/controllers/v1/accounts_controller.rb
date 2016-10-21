@@ -1,6 +1,7 @@
 module V1
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_request, only: [:create]
 
   # GET /accounts
   def index
@@ -33,6 +34,7 @@ class AccountsController < ApplicationController
   # POST /accounts
   def create
     @account = Account.new(account_params)
+    @account.jid = @account.country_code + @account.phone_number + "@neucom.io"
 
     if @account.save
       render json: @account, status: :created, location: @account
@@ -61,9 +63,9 @@ class AccountsController < ApplicationController
       @account = Account.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a trusted parameter "white list" through., :password_confirmation
     def account_params
-      params.require(:account).permit(:email, :password, :phone_number, :country_code)
+      params.require(:account).permit(:email, :password, :password_confirmation,:phone_number, :country_code, :name)
     end
 end
 end

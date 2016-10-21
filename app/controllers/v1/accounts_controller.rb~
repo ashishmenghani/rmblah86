@@ -16,12 +16,12 @@ class AccountsController < ApplicationController
   end
   
   def getaccountsbyemail
-    @accounts =  Account.where(:jid => params[:email])
+    @accounts =  Account.where(:email => params[:email])
     render json: @accounts
   end
   
   def getaccountsbyphonenumber
-    @accounts =  Account.where(:jid => params[:phone_number])
+    @accounts =  Account.where(:phone_number => params[:phone_number])
     render json: @accounts
   end
 
@@ -61,9 +61,9 @@ class AccountsController < ApplicationController
       @account = Account.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a trusted parameter "white list" through., :password_confirmation
     def account_params
-      params.require(:account).permit(:email, :password, :phone_number, :country_code)
+      params.require(:account).permit(:email, :password, :phone_number, :country_code, :name, :password_confirmation)
     end
 end
 end
