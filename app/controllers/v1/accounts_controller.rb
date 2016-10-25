@@ -35,9 +35,13 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     @account.jid = @account.country_code + @account.phone_number + "@neucom.io"
+    @user =  User.new()
+    @user.jid = @account.jid
 
-    if @account.save
-      render json: @account, status: :created, location: @account
+    if @account.save     
+      if @user.save
+         render json: @account, status: :created, location: @account
+      end  
     else
       render json: @account.errors, status: :unprocessable_entity
     end
